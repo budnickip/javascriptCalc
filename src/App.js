@@ -8,10 +8,12 @@ function Button(props) {
   )
 }
 
+
 function App() {
   const [number, setNumber] = useState(0)
   const [oldNumber, setOldNumber] = useState('')
   const [wynik, setWynik] = useState('')
+  const [evaluate, setEvaluate] = useState(false)
 
   const nothing = () =>{
     return;
@@ -25,7 +27,13 @@ function App() {
 
   const putNumber = (newNumber) =>{
     setWynik('')
-    if(newNumber == '+' || newNumber == '-' || newNumber == '/' || newNumber =='*' || number == '+' || number == '-' || number == '/' || number =='*'){
+    if(newNumber == '.'){
+      if(number.toString().indexOf('.') == -1){
+        //spróbuj sprawdzać Number
+        number ? setNumber(number + `${newNumber}`) : setNumber(newNumber) 
+        oldNumber ? setOldNumber(oldNumber + `${newNumber}`) : setOldNumber(newNumber)
+      }
+    }else if(newNumber == '+' || newNumber == '-' || newNumber == '/' || newNumber =='*' || number == '+' || number == '-' || number == '/' || number =='*'){
       setNumber(newNumber)
       oldNumber ? setOldNumber(oldNumber + `${newNumber}`) : setOldNumber(newNumber)
       
@@ -41,11 +49,26 @@ function App() {
   }
 //eval - zsumuje stringa :D
   const operations = (operator) => {
+    if(evaluate){
+      setEvaluate(false)
+      console.log(wynik)
+      setOldNumber(wynik)
+     // setWynik('')
+    }
     setNumber(operator)
+    if(operator == '-' && oldNumber.length == 0 ){
+      setOldNumber(operator)
+    }
     if(oldNumber.length == 0){
       return;
-    }else if(oldNumber[oldNumber.length-1] == '+'|| oldNumber[oldNumber.length-1] == '*' || oldNumber[oldNumber.length-1] == '/' ||oldNumber[oldNumber.length-1] == '-'){
-      setOldNumber(oldNumber.slice(0,oldNumber-1) + operator)
+      //||oldNumber[oldNumber.length-1] == '-' && oldNumber[oldNumber.length-2] == '-'
+    }else if(operator == '-' && oldNumber[oldNumber.length-1] == '-') {
+      setOldNumber(oldNumber.slice(0,oldNumber.length-1) + '+')
+      return;
+     }
+    else if(oldNumber[oldNumber.length-1] == '+'|| oldNumber[oldNumber.length-1] == '*' || oldNumber[oldNumber.length-1] == '/' ){
+      setOldNumber(oldNumber.slice(0,oldNumber.length-1) + operator)
+     // console.log(eval('5--5')) błąd - więc sam muszę zmienić -- na +
     }else{
       setOldNumber(oldNumber + `${operator}`)
     }
@@ -56,8 +79,10 @@ function App() {
     console.log(wynik)
     setOldNumber(oldNumber + ' = ' + wynik) */
     setWynik(eval(oldNumber))
-    setOldNumber(oldNumber + ' = ' + wynik)
-    console.log(wynik)
+    //setOldNumber(oldNumber + ' = ' + wynik)
+    setEvaluate(true)
+    setOldNumber(wynik)
+//    setNumber(0)
     
   }
   return (
@@ -82,7 +107,7 @@ function App() {
       <Button idx="three" name="3" size="1" onClick={() => putNumber(3)}/>
       <Button idx="equals" name="=" size="2" onClick={calculate} />
       <Button idx="zero" name="0" size="2" onClick={() => putNumber(0)}/>
-      <Button idx="decimal" name="." size="1" onClick={nothing}/>
+      <Button idx="decimal" name="." size="1" onClick={() => putNumber('.')}/>
     </div>
   );
 }
