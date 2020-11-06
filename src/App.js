@@ -33,7 +33,7 @@ function App() {
         number ? setNumber(number + `${newNumber}`) : setNumber(newNumber) 
         oldNumber ? setOldNumber(oldNumber + `${newNumber}`) : setOldNumber(newNumber)
       }
-    }else if(newNumber == '+' || newNumber == '-' || newNumber == '/' || newNumber =='*' || number == '+' || number == '-' || number == '/' || number =='*'){
+    }else if( number == '+' || number == '-' || number == '/' || number =='*'){
       setNumber(newNumber)
       oldNumber ? setOldNumber(oldNumber + `${newNumber}`) : setOldNumber(newNumber)
       
@@ -65,9 +65,16 @@ function App() {
     }else if(operator == '-' && oldNumber[oldNumber.length-1] == '-') {
       setOldNumber(oldNumber.slice(0,oldNumber.length-1) + '+')
       return;
+     }else if(operator == '-' &&(oldNumber[oldNumber.length-1] == '+'|| oldNumber[oldNumber.length-1] == '*' || oldNumber[oldNumber.length-1] == '/' )){
+      setOldNumber(oldNumber + `${operator}`)
      }
-    else if(oldNumber[oldNumber.length-1] == '+'|| oldNumber[oldNumber.length-1] == '*' || oldNumber[oldNumber.length-1] == '/' ){
-      setOldNumber(oldNumber.slice(0,oldNumber.length-1) + operator)
+    else if(oldNumber[oldNumber.length-1] == '+'|| oldNumber[oldNumber.length-1] == '*' || oldNumber[oldNumber.length-1] == '/' || oldNumber[oldNumber.length-1] == '-'  ){
+      if(oldNumber[oldNumber.length-2] == '+' || oldNumber[oldNumber.length-2] == '*' || oldNumber[oldNumber.length-2] == '/'){
+        setOldNumber(oldNumber.slice(0,oldNumber.length-2) + operator)
+      }else{
+        setOldNumber(oldNumber.slice(0,oldNumber.length-1) + operator)
+      }
+      
      // console.log(eval('5--5')) błąd - więc sam muszę zmienić -- na +
     }else{
       setOldNumber(oldNumber + `${operator}`)
