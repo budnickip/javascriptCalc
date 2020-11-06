@@ -15,9 +15,6 @@ function App() {
   const [wynik, setWynik] = useState('')
   const [evaluate, setEvaluate] = useState(false)
 
-  const nothing = () =>{
-    return;
-  }
 
   const clear = () =>{
     setNumber(0)
@@ -52,8 +49,7 @@ function App() {
     if(evaluate){
       setEvaluate(false)
       console.log(wynik)
-      setOldNumber(wynik)
-     // setWynik('')
+      setOldNumber(wynik + operator)
     }
     setNumber(operator)
     if(operator == '-' && oldNumber.length == 0 ){
