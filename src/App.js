@@ -1,12 +1,6 @@
 import { useState } from 'react';
 import './App.scss';
-
-
-function Button(props) {
-  return (
-  <button id={props.idx} onClick={props.onClick}>{props.name}</button>
-  )
-}
+import Button from './Button'
 
 
 function App() {
@@ -21,12 +15,12 @@ function App() {
     setOldNumber('')
     setWynik('')
   }
+  
 
   const putNumber = (newNumber) =>{
     setWynik('')
     if(newNumber == '.'){
       if(number.toString().indexOf('.') == -1){
-        //spróbuj sprawdzać Number
         number ? setNumber(number + `${newNumber}`) : setNumber(newNumber) 
         oldNumber ? setOldNumber(oldNumber + `${newNumber}`) : setOldNumber(newNumber)
       }
@@ -38,13 +32,7 @@ function App() {
       number ? setNumber(number + `${newNumber}`) : setNumber(newNumber) 
     oldNumber ? setOldNumber(oldNumber + `${newNumber}`) : setOldNumber(newNumber)
     }
-    /*typeof(newNumber) == 'number' ? number ? setNumber(number + `${newNumber}`) : setNumber(newNumber) : setNumber(newNumber)
-    
-  //  number ? setNumber(number + `${newNumber}`) : setNumber(newNumber) 
-    oldNumber ? setOldNumber(oldNumber + `${newNumber}`) : setOldNumber(newNumber)
- */
   }
-//eval - zsumuje stringa :D
   const operations = (operator) => {
     if(evaluate){
       setEvaluate(false)
@@ -57,7 +45,6 @@ function App() {
     }
     if(oldNumber.length == 0){
       return;
-      //||oldNumber[oldNumber.length-1] == '-' && oldNumber[oldNumber.length-2] == '-'
     }else if(operator == '-' && oldNumber[oldNumber.length-1] == '-') {
       setOldNumber(oldNumber.slice(0,oldNumber.length-1) + '+')
       return;
@@ -70,24 +57,18 @@ function App() {
       }else{
         setOldNumber(oldNumber.slice(0,oldNumber.length-1) + operator)
       }
-      
-     // console.log(eval('5--5')) błąd - więc sam muszę zmienić -- na +
+
     }else{
       setOldNumber(oldNumber + `${operator}`)
     }
   }
 
   const calculate = () => {
-    /*setWynik(eval(oldNumber))
-    console.log(wynik)
-    setOldNumber(oldNumber + ' = ' + wynik) */
     setWynik(eval(oldNumber))
-    //setOldNumber(oldNumber + ' = ' + wynik)
     setEvaluate(true)
     setOldNumber(wynik)
-//    setNumber(0)
-    
   }
+  
   return (
     <div id="calculator" className="calc">
       <div className="upper-displayer">
