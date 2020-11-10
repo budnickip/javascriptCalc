@@ -1,8 +1,9 @@
 import React from 'react';
+import './index.scss';
 
 function Button(props) {
     return (
-    <button id={props.idx} onClick={props.onClick}>{props.name}</button>
+    <button className={props.size} id={props.idx} onClick={props.onClick}>{props.name}</button>
     )
   }
 export default Button
