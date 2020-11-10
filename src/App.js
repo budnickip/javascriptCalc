@@ -71,10 +71,10 @@ function App() {
   
   return (
     <div id="calculator" className="calc">
-      <div className="upper-displayer">
-      <div>{oldNumber}</div>
+      <div className="displayer">
+        <div className="upper-displayer">{oldNumber}</div>
+        <div id="display" className="lower-displayer">{wynik ? wynik : number}</div>
       </div>
-      <div id="display" className="displayer">{wynik ? wynik : number}</div>
       <Button idx="clear" name="AC" size="two" onClick={clear}/>
       <Button idx="divide" name="/" size="one" onClick={() => operations('/')}/>
       <Button idx="multiply" name="x" size="one" onClick={() => operations('*')}/>
