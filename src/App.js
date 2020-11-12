@@ -75,23 +75,25 @@ function App() {
         <div className="upper-displayer">{oldNumber}</div>
         <div id="display" className="lower-displayer">{wynik ? wynik : number}</div>
       </div>
-      <Button idx="clear" name="AC" size="two" onClick={clear}/>
-      <Button idx="divide" name="/" size="one" onClick={() => operations('/')}/>
-      <Button idx="multiply" name="x" size="one" onClick={() => operations('*')}/>
-      <Button idx="seven" name="7" size="one" onClick={() => putNumber(7)}/>
-      <Button idx="eight" name="8" size="one" onClick={() => putNumber(8)}/>
-      <Button idx="nine" name="9" size="one" onClick={() => putNumber(9)}/>
-      <Button idx="subtract" name="-" size="one" onClick={() => operations('-')}/>
-      <Button idx="four" name="4" size="one" onClick={() => putNumber(4)}/>
-      <Button idx="five" name="5" size="one" onClick={() => putNumber(5)}/>
-      <Button idx="six" name="6" size="one" onClick={() => putNumber(6)}/>
-      <Button idx="add" name="+" size="one" onClick={() => operations('+')}/>
-      <Button idx="one" name="1" size="one" onClick={() => putNumber(1)}/>
-      <Button idx="two" name="2" size="one" onClick={() => putNumber(2)}/>
-      <Button idx="three" name="3" size="one" onClick={() => putNumber(3)}/>
-      <Button idx="equals" name="=" size="two" onClick={calculate} />
-      <Button idx="zero" name="0" size="two" onClick={() => putNumber(0)}/>
-      <Button idx="decimal" name="." size="one" onClick={() => putNumber('.')}/>
+      <div className="buttons">
+        <Button idx="clear" name="AC" size="two" onClick={clear}/>
+        <Button idx="divide" name="/" size="one" onClick={() => operations('/')}/>
+        <Button idx="multiply" name="x" size="one" onClick={() => operations('*')}/>
+        <Button idx="seven" name="7" size="one" onClick={() => putNumber(7)}/>
+        <Button idx="eight" name="8" size="one" onClick={() => putNumber(8)}/>
+        <Button idx="nine" name="9" size="one" onClick={() => putNumber(9)}/>
+        <Button idx="subtract" name="-" size="one" onClick={() => operations('-')}/>
+        <Button idx="four" name="4" size="one" onClick={() => putNumber(4)}/>
+        <Button idx="five" name="5" size="one" onClick={() => putNumber(5)}/>
+        <Button idx="six" name="6" size="one" onClick={() => putNumber(6)}/>
+        <Button idx="add" name="+" size="one" onClick={() => operations('+')}/>
+        <Button idx="one" name="1" size="one" onClick={() => putNumber(1)}/>
+        <Button idx="two" name="2" size="one" onClick={() => putNumber(2)}/>
+        <Button idx="three" name="3" size="one" onClick={() => putNumber(3)}/>
+        <Button idx="equals" name="=" size="two" onClick={calculate} />
+        <Button idx="zero" name="0" size="two" onClick={() => putNumber(0)}/>
+        <Button idx="decimal" name="." size="one" onClick={() => putNumber('.')}/>
+      </div>
     </div>
   );
 }
