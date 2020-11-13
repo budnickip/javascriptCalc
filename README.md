@@ -1,5 +1,8 @@
 # JavaScript advenced Calculator
 
+live:\
+https://budnickip.github.io/javascriptCalc/ \
+
 Dlaczego ten kalkulator nie jest zwykłym kalkulatorem?\
 Jest on opracowany w celu zaliczenia wszystkich kryteriów do zadania na freeCodeCamp.\
 Najważniejsze funkcjonalności, wyróżniające go od kalkulatorów innych juniorów to: \
