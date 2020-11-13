@@ -1,16 +1,23 @@
 .calc{
     background-color: #2C3A47;
-    min-height: 500px;
+    border-radius: 5px;
+  //  min-height: 350px;
     width: 310px;
     display: flex;
     flex-wrap: wrap;
+    padding: 15px;
 }
 
 .displayer{
     width: 100%;
+    height: 60px;
+    padding: 15px;
+    border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    background-color: #5B6977;
+    color: #00C6B4;
 }
 
 .upper-displayer{
@@ -29,4 +36,6 @@
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 70px 70px 70px 70px;
+    grid-template-rows: 35px 35px 35px 35px 35px;
+    padding-top: 15px;
 }
