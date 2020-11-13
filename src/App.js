@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import './App.scss';
 import Button from './Button'
+import Displayer from './Displayer'
+
+
 
 
 function App() {
@@ -71,10 +74,7 @@ function App() {
   
   return (
     <div id="calculator" className="calc">
-      <div className="displayer">
-        <div className="upper-displayer">{oldNumber}</div>
-        <div id="display" className="lower-displayer">{wynik ? wynik : number}</div>
-      </div>
+      <Displayer oldNumber={oldNumber} wynik={wynik} number={number}/>
       <div className="buttons">
         <Button idx="clear" name="AC" size="two" onClick={clear}/>
         <Button idx="divide" name="/" size="one" onClick={() => operations('/')}/>
