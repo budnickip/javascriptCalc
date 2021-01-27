@@ -49,8 +49,10 @@ function App() {
     if(oldNumber.length === 0){
       return;
     }else if(operator === '-' && oldNumber[oldNumber.length-1] === '-') {
-      setOldNumber(oldNumber.slice(0,oldNumber.length-1) + '+')
-      return;
+      if(oldNumber[oldNumber.length-2] !== '+'){
+        setOldNumber(oldNumber.slice(0,oldNumber.length-1) + '+')
+        return;
+      }
      }else if(operator === '-' &&(oldNumber[oldNumber.length-1] === '+'|| oldNumber[oldNumber.length-1] === '*' || oldNumber[oldNumber.length-1] === '/' )){
       setOldNumber(oldNumber + `${operator}`)
      }
